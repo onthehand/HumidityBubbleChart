@@ -13,8 +13,8 @@ function convertData(source) {
   var max = 1;
   var buf = {};
   for (var row in source) {
-    x = String(parseInt(parseFloat(source[row][1]) + 0.5));
-    y = String(parseInt(parseFloat(source[row][2]) + 0.5));
+    y = String(parseInt(parseFloat(source[row][1])*2.0 + 0.5))*0.5;
+    x = String(parseInt(parseFloat(source[row][2])*2.0 + 0.5))*0.5;
     if ( buf[x] == undefined ){
       buf[x] = {};
       buf[x][y] = 1;
@@ -27,6 +27,7 @@ function convertData(source) {
 
   for (var i in buf) {
     for (var j in buf[i]) {
+      if ( buf[i][j] < max*0.1 ){ buf[i][j] = undefined; continue; }
       data.push( { x:i, y:j, r:20*buf[i][j]/max } );
     }
   }
@@ -34,71 +35,30 @@ function convertData(source) {
 }
 
 function readyChart() {
-  var data = [{},{},{},{},{},{}] ;
+  var data = [];
+  for( var i=0; i<datasets.length; i++ ){
+    data.push({});
+    datasets[i].data = data[i];
+  }
 
   var ctx = document.getElementById("myChart").getContext("2d");
   var myChart = new Chart(ctx, {
     type: 'bubble',
     data: {
-      datasets: [
-        {
-          label: "リビング",
-          data: data[0],
-          borderColor: '#FF0000',
-          borderWidth: 3,
-          showLine: true
-        },
-        {
-          label: "寝室",
-          data: data[1],
-          borderColor: '#00FFFF',
-          borderWidth: 3,
-          showLine: true
-        },
-        {
-          label: "子供部屋",
-          data: data[2],
-          borderColor: '#FF00FF',
-          borderWidth: 3,
-          showLine: true
-        },
-        {
-          label: "洗面所",
-          data: data[3],
-          borderColor: '#0000FF',
-          borderWidth: 3,
-          showLine: true
-        },
-        {
-          label: "苔培養棚",
-          data: data[4],
-          borderColor: '#00FF00',
-          borderWidth: 3,
-          showLine: true
-        },
-        {
-          label: "洗面所収納",
-          data: data[5],
-          borderColor: '#666666',
-          borderWidth: 3,
-          showLine: true
-        }
-
-
-      ]
+      datasets: datasets
     },
     options: {
       scales: {
         xAxes: [{
           scaleLabel: {
             display: true,
-            labelString: '湿度 [%]'
+            labelString: '室温 [℃]'
           }
         }],
         yAxes: [{
           scaleLabel: {
             display: true,
-            labelString: '室温 [℃]'
+            labelString: '湿度 [%]'
           }
         }]
       }
@@ -110,15 +70,6 @@ function readyChart() {
 
 function main() {
 
-  var filePath = [
-  	'./data/log_1.txt?'+new Date().getTime(),
-  	'./data/log_2.txt?'+new Date().getTime(),
-  	'./data/log_3.txt?'+new Date().getTime(),
-  	'./data/log_4.txt?'+new Date().getTime(),
-  	'./data/log_5.txt?'+new Date().getTime(),
-  	'./data/log_6.txt?'+new Date().getTime()
-	];
-
   var myChart = readyChart();
 
   updateChart(filePath, myChart,0);
@@ -129,6 +80,7 @@ function main() {
 
 function updateChart(filePath, myChart, idx) {
 
+  if ( idx == undefined ) { return; }
   if ( idx >= filePath.length ){ return; }
   var req = new XMLHttpRequest();
   req.open("GET", filePath[idx], true);

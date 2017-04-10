@@ -1,0 +1,32 @@
+var datasets = [
+        { label: "リビング",	borderColor: '#FF0000', borderWidth: 3, showLine: true },
+        { label: "寝室",	borderColor: '#00FFFF', borderWidth: 3, showLine: true },
+        { label: "子供部屋",	borderColor: '#FF00FF', borderWidth: 3, showLine: true },
+        { label: "洗面所",	borderColor: '#0000FF', borderWidth: 3, showLine: true },
+        { label: "苔培養棚",	borderColor: '#00FF00', borderWidth: 3, showLine: true },
+        { label: "洗面所収納",	borderColor: '#666666', borderWidth: 3, showLine: true },
+        { label: "仕事部屋",	borderColor: '#FF9933', borderWidth: 3, showLine: true },
+        { label: "納戸",	borderColor: '#0099CC', borderWidth: 3, showLine: true }
+];
+var filePath = [
+  	'./data_dht11/log_1.txt?'+new Date().getTime(),
+  	'./data_dht11/log_2.txt?'+new Date().getTime(),
+  	'./data_dht11/log_3.txt?'+new Date().getTime(),
+  	'./data_dht11/log_4.txt?'+new Date().getTime(),
+  	'./data_dht11/log_5.txt?'+new Date().getTime(),
+  	'./data_dht11/log_6.txt?'+new Date().getTime(),
+  	'./data_dht11/log_7.txt?'+new Date().getTime(),
+  	'./data_dht11/log_8.txt?'+new Date().getTime()
+
+/*
+  	'./data/log_1.txt?'+new Date().getTime(),
+  	'./data/log_2.txt?'+new Date().getTime(),
+  	'./data/log_3.txt?'+new Date().getTime(),
+  	'./data/log_4.txt?'+new Date().getTime(),
+  	'./data/log_5.txt?'+new Date().getTime(),
+  	'./data/log_6.txt?'+new Date().getTime(),
+  	'./data/log_7.txt?'+new Date().getTime(),
+  	'./data/log_8.txt?'+new Date().getTime()
+*/
+];
+
