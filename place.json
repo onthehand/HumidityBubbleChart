@@ -9,16 +9,6 @@ var datasets = [
         { label: "納戸",	borderColor: '#0099CC', borderWidth: 3, showLine: true }
 ];
 var filePath = [
-  	'./data_dht11/log_1.txt?'+new Date().getTime(),
-  	'./data_dht11/log_2.txt?'+new Date().getTime(),
-  	'./data_dht11/log_3.txt?'+new Date().getTime(),
-  	'./data_dht11/log_4.txt?'+new Date().getTime(),
-  	'./data_dht11/log_5.txt?'+new Date().getTime(),
-  	'./data_dht11/log_6.txt?'+new Date().getTime(),
-  	'./data_dht11/log_7.txt?'+new Date().getTime(),
-  	'./data_dht11/log_8.txt?'+new Date().getTime()
-
-/*
   	'./data/log_1.txt?'+new Date().getTime(),
   	'./data/log_2.txt?'+new Date().getTime(),
   	'./data/log_3.txt?'+new Date().getTime(),
@@ -27,6 +17,5 @@ var filePath = [
   	'./data/log_6.txt?'+new Date().getTime(),
   	'./data/log_7.txt?'+new Date().getTime(),
   	'./data/log_8.txt?'+new Date().getTime()
-*/
 ];
 
